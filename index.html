@@ -8,6 +8,29 @@
     <title>Document</title>
     <link rel="stylesheet" href="./app/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <style>
+        @import 'https://code.highcharts.com/css/highcharts.css';
+
+        #container {
+            height: 400px;
+            max-width: 800px;
+            min-width: 320px;
+            margin: 0 auto;
+        }
+
+        .highcharts-pie-series .highcharts-point {
+            stroke: #EDE;
+            stroke-width: 2px;
+        }
+
+        .highcharts-pie-series .highcharts-data-label-connector {
+            stroke: silver;
+            stroke-dasharray: 2, 2;
+            stroke-width: 2px;
+        }
+    </style>
 </head>
 
 <body>
@@ -87,7 +110,7 @@
                                 </div>
                             </div>
                             <div class="chart-container">
-                                <canvas id="pieChart" width="300" height="300"></canvas>
+                                <canvas id="pieChart"></canvas>
                             </div>
                         </div>
                     </div>
@@ -120,9 +143,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="chart-container">
-                                <canvas id="fb" width="300" height="300"></canvas>
-                            </div>
+                            <!-- <div class="chart-container">
+                                 <canvas id="fb" width="300" height="300"></canvas> 
+                        </div> -->
+                            <div id='container' width="300" height="300"></div>
                         </div>
                     </div>
                 </div>

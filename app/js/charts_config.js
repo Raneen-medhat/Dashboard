@@ -1,5 +1,29 @@
+Highcharts.chart('container', {
 
+    chart: {
+        styledMode: true
+    },
 
+    title: {
+        text: 'Pie point CSS'
+    },
+    legend: {
+        align: 'right',
+        layout: 'Vertical',
+    },
+    series: [{
+        type: 'pie',
+        allowPointSelect: true,
+        keys: ['name', 'y', 'selected', 'sliced'],
+        data: [
+            ['Prunes', 135.6, true, true],
+            ['Apples', 29.9, false],
+            ['Pears', 71.5, false],
+            ['Oranges', 106.4, false]
+        ],
+        showInLegend: true
+    }]
+});
 // twitter chart
 var ctx = document.getElementById('pieChart');
 data = {
