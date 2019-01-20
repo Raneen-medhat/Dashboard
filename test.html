@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+
+    <style>
+        @import 'https://code.highcharts.com/css/highcharts.css';
+
+        #container {
+            height: 400px;
+            max-width: 800px;
+            min-width: 320px;
+            margin: 0 auto;
+        }
+
+        .highcharts-pie-series .highcharts-point {
+            stroke: #EDE;
+            stroke-width: 2px;
+        }
+
+        .highcharts-pie-series .highcharts-data-label-connector {
+            stroke: silver;
+            stroke-dasharray: 2, 2;
+            stroke-width: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+</body>
+
+</html>
+<script>
+    // Highcharts.chart('container', {
+
+    //     chart: {
+    //         styledMode: true
+    //     },
+
+    //     title: {
+    //         text: 'Pie point CSS'
+    //     },
+    //     legend: {
+    //         align: 'right',
+    //         alignColumns: false,
+    //         layout: 'Vertical'
+    //     },
+    //     series: [{
+    //         type: 'pie',
+    //         allowPointSelect: true,
+    //         keys: ['name', 'y', 'selected', 'sliced'],
+    //         data: [
+    //             ['Prunes', 135.6, true, true],
+    //             ['Apples', 29.9, false],
+    //             ['Pears', 71.5, false],
+    //             ['Oranges', 106.4, false]
+    //         ],
+    //         showInLegend: true
+    //     }]
+    // });
+    Highcharts.chart('container', {
+        chart: {
+            type: 'variablepie'
+        },
+        title: {
+            text: 'Countries compared by population density and total area.'
+        },
+        tooltip: {
+            headerFormat: '',
+            pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>' +
+                'Area (square km): <b>{point.y}</b><br/>' +
+                'Population density (people per square km): <b>{point.z}</b><br/>'
+        },
+        legend: {
+            align: 'right',
+            alignColumns: false,
+            layout: 'Vertical'
+        },
+        series: [{
+            minPointSize: 10,
+            innerSize: '20%',
+            zMin: 0,
+            name: 'countries',
+            data: [{
+                name: 'Spain',
+                y: 505370,
+                z: 92.9
+            }, {
+                name: 'France',
+                y: 551500,
+                z: 118.7
+            }, {
+                name: 'Poland',
+                y: 312685,
+                z: 124.6
+            }, {
+                name: 'Czech Republic',
+                y: 78867,
+                z: 137.5
+            }, {
+                name: 'Italy',
+                y: 301340,
+                z: 201.8
+            }, {
+                name: 'Switzerland',
+                y: 41277,
+                z: 214.5
+            }, {
+                name: 'Germany',
+                y: 357022,
+                z: 235.6
+            }],
+            showInLegend: true
+
+        }]
+    });
+</script>
