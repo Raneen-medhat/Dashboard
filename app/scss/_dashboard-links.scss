@@ -1,0 +1,19 @@
+#dashboard-links {
+    background: #1f3799;
+    padding: 10px;
+    ul {
+        li {
+            padding-left: 20px;
+        }
+        li.active {
+            padding-left: 0;
+            background: #4d5fa9;
+            border-radius: 10px;
+            color: #fff;
+            padding: 5px;
+            min-width: 100px;
+            text-align: center;
+        }
+    }
+
+}

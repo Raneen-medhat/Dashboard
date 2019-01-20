@@ -1,0 +1,71 @@
+header {
+  background: #0a245d;
+  padding: 10px;
+  color: #fff; }
+  header ul li {
+    padding-left: 20px; }
+
+#dashboard-links {
+  background: #1f3799;
+  padding: 10px; }
+  #dashboard-links ul li {
+    padding-left: 20px; }
+  #dashboard-links ul li.active {
+    padding-left: 0;
+    background: #4d5fa9;
+    border-radius: 10px;
+    color: #fff;
+    padding: 5px;
+    min-width: 100px;
+    text-align: center; }
+
+.boxs-wrapper {
+  margin-top: 20px; }
+  .boxs-wrapper .twitter-sentiment {
+    background: #ffffff;
+    padding: 20px 0;
+    border-radius: 10px; }
+  .boxs-wrapper .box-header {
+    position: relative; }
+    .boxs-wrapper .box-header .options img {
+      width: 25px;
+      float: right;
+      cursor: pointer; }
+    .boxs-wrapper .box-header .options .options-popup {
+      display: none;
+      background: #fff;
+      box-shadow: 2px 5px 5px 0px #8c8b8b;
+      padding: 10px;
+      position: absolute;
+      width: 120px;
+      right: 0;
+      top: 22px;
+      border-radius: 5px; }
+    .boxs-wrapper .box-header .desc {
+      font-size: 12px;
+      color: #afabab;
+      padding-top: 5px; }
+
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  background: #ddd;
+  overflow-x: hidden; }
+
+a {
+  text-decoration: none;
+  color: #ddd; }
+
+ul li {
+  display: inline-block;
+  list-style: none; }
+
+.ui-container {
+  width: 90%;
+  margin: 0 auto; }
+
+.chart-container {
+  margin: 0 auto;
+  display: table; }

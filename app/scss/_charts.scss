@@ -1,0 +1,36 @@
+
+.boxs-wrapper {
+    margin-top: 20px;
+    .twitter-sentiment {
+        background: #ffffff;
+        padding: 20px 0;
+        border-radius:10px; 
+    }
+    .box-header {
+        position: relative;
+        .options{
+            img {
+                width: 25px;
+                float: right;
+                cursor: pointer;
+            }
+            .options-popup {
+                display: none;
+                background: #fff;
+                box-shadow: 2px 5px 5px 0px #8c8b8b;
+                padding: 10px;
+                position: absolute;
+                width: 120px;
+                right: 0;
+                top: 22px;
+                border-radius: 5px; 
+            }
+        }
+            .desc {
+                font-size: 12px;
+                color: #afabab;
+                padding-top: 5px;
+            }
+    }
+
+}

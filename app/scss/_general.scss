@@ -1,0 +1,27 @@
+// reset default
+* {
+    padding: 0;
+    margin: 0;
+}
+body {
+    background: #ddd;
+    overflow-x: hidden;
+}
+a { 
+    text-decoration: none;
+    color: #ddd;
+}
+ul {
+    li {
+        display: inline-block;
+        list-style: none;
+    }
+}
+.ui-container {
+    width: 90%;
+    margin: 0 auto;
+}
+.chart-container {
+    margin: 0 auto;
+    display: table;
+}

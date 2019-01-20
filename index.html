@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./app/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
+</head>
+
+<body>
+    <!-- Start nav bar -->
+    <header>
+        <div class="ui-container">
+            <div class="row">
+                <div class="col-xs-12
+                            col-sm-8
+                            col-md-6
+                            col-lg-2">
+                    <div class="logo">
+                        <a href="#">SocialHub</a>
+                    </div>
+                </div>
+                <div class="col-xs-12
+                            col-sm-8
+                            col-md-6
+                            col-lg-6">
+                    <nav>
+                        <ul>
+                            <li><a href="">Analytics</a></li>
+                            <li><a href="">Campaigns</a></li>
+                            <li><a href="">Engagement</a></li>
+                            <li><a href="">Role & Permission</a></li>
+                            <li><a href="">Organization</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-xs-12
+                            col-sm-8
+                            col-md-6
+                            col-lg-4">
+                    <div class="icons"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End nav bar -->
+
+    <!-- start dashboard links -->
+    <section id="dashboard-links">
+        <div class="ui-container">
+            <ul>
+                <li class="active"><a href="#">Dashboard</a></li>
+                <li><a href="#">Streams</a></li>
+                <li><a href="#">Compartive</a></li>
+                <li><a href="#">Influncers</a></li>
+            </ul>
+        </div>
+    </section>
+    <!-- End dashboard links -->
+
+    <!-- End boxs container -->
+    <section class="boxs-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="twitter-sentiment">
+                        <div class="ui-container">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p>Twitter Sentiment</p>
+                                        <p class="desc">Last month</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="options">
+                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                            <div class="options-popup">
+                                                <p>Setting</p>
+                                                <p>Reload</p>
+                                                <p>Delete</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="pieChart" width="300" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="twitter-sentiment">
+                        <div class="ui-container">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p>FB Sentiment of comments</p>
+                                        <p class="desc">Last month</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="options">
+                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                            <div class="options-popup">
+                                                <p>Setting</p>
+                                                <p>Reload</p>
+                                                <p>Delete</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container">
+                                <canvas id="fb" width="300" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End boxs container -->
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
+    <script src="./app/js/charts_config.js"></script>
+    <script src="./app/js/script.js"></script>
+</body>
+
+</html>
