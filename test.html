@@ -1,121 +1,46 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <script src="https://code.highcharts.com/highcharts.js"></script>
-    <script src="https://code.highcharts.com/modules/exporting.js"></script>
-    <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
-
-    <style>
-        @import 'https://code.highcharts.com/css/highcharts.css';
-
-        #container {
-            height: 400px;
-            max-width: 800px;
-            min-width: 320px;
-            margin: 0 auto;
-        }
-
-        .highcharts-pie-series .highcharts-point {
-            stroke: #EDE;
-            stroke-width: 2px;
-        }
-
-        .highcharts-pie-series .highcharts-data-label-connector {
-            stroke: silver;
-            stroke-dasharray: 2, 2;
-            stroke-width: 2px;
-        }
-    </style>
-</head>
-
-<body>
-    <div id="container"></div>
-</body>
-
-</html>
-<script>
-    // Highcharts.chart('container', {
-
-    //     chart: {
-    //         styledMode: true
-    //     },
-
-    //     title: {
-    //         text: 'Pie point CSS'
-    //     },
-    //     legend: {
-    //         align: 'right',
-    //         alignColumns: false,
-    //         layout: 'Vertical'
-    //     },
-    //     series: [{
-    //         type: 'pie',
-    //         allowPointSelect: true,
-    //         keys: ['name', 'y', 'selected', 'sliced'],
-    //         data: [
-    //             ['Prunes', 135.6, true, true],
-    //             ['Apples', 29.9, false],
-    //             ['Pears', 71.5, false],
-    //             ['Oranges', 106.4, false]
-    //         ],
-    //         showInLegend: true
-    //     }]
-    // });
-    Highcharts.chart('container', {
-        chart: {
-            type: 'variablepie'
-        },
-        title: {
-            text: 'Countries compared by population density and total area.'
-        },
-        tooltip: {
-            headerFormat: '',
-            pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>' +
-                'Area (square km): <b>{point.y}</b><br/>' +
-                'Population density (people per square km): <b>{point.z}</b><br/>'
-        },
-        legend: {
-            align: 'right',
-            alignColumns: false,
-            layout: 'Vertical'
-        },
-        series: [{
-            minPointSize: 10,
-            innerSize: '20%',
-            zMin: 0,
-            name: 'countries',
-            data: [{
-                name: 'Spain',
-                y: 505370,
-                z: 92.9
-            }, {
-                name: 'France',
-                y: 551500,
-                z: 118.7
-            }, {
-                name: 'Poland',
-                y: 312685,
-                z: 124.6
-            }, {
-                name: 'Czech Republic',
-                y: 78867,
-                z: 137.5
-            }, {
-                name: 'Italy',
-                y: 301340,
-                z: 201.8
-            }, {
-                name: 'Switzerland',
-                y: 41277,
-                z: 214.5
-            }, {
-                name: 'Germany',
-                y: 357022,
-                z: 235.6
-            }],
-            showInLegend: true
-
-        }]
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-globe"></i>
+            <?php echo $heading_title; ?>
+        </h3>
+    </div>
+    <div class="panel-body">
+        <div id="vmap" style="width: 100%; height: 260px;"></div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+<link type="text/css" href="./app/js/jqvmap/jqvmap.css" rel="stylesheet" media="screen" />
+<script type="text/javascript" src="./app/js/jqvmap/jquery.vmap.js"></script>
+<script type="text/javascript" src="./app/js/jqvmap/maps/continents/jquery.vmap.egypt.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        ar = [];
+        ar['EGY1530'] = {
+            'total': 100,
+            'amount': 100
+        };
+        data = ar['total'];
+        $('#vmap').vectorMap({
+            map: 'egypt_en',
+            backgroundColor: '#FFFFFF',
+            borderColor: '#FFFFFF',
+            color: '#9FD5F1',
+            hoverOpacity: 0.7,
+            selectedColor: '#666666',
+            enableZoom: true,
+            showTooltip: true,
+            values: data,
+            normalizeFunction: 'polynomial',
+            onLabelShow: function (event, label, code) {
+                if (ar[code]) {
+                    label.html('<strong>' + label.text() + '</strong><br />' +
+                        ar[code][
+                            'total'
+                        ] + '<br />' + ar[
+                            code]['amount']);
+                }
+            }
+        });
     });
 </script>

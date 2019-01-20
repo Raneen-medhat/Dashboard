@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./app/css/styles.css">
+    <link rel="stylesheet" href="./app/js/jquery-jvectormap-2.0.3.css" type="text/css" media="screen" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -125,7 +127,32 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="
+                margin-top: 10px;
+            ">
+                    <div class="twitter-sentiment">
+                        <div class="ui-container">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p>FB Sentiment of comments</p>
+                                        <p class="desc">Last month</p>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="options">
+                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                            <div class="options-popup">
+                                                <p>Setting</p>
+                                                <p>Reload</p>
+                                                <p>Delete</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="vmap" style="width: 500px; height: 400px"></div>
+                        </div>
+                    </div>
 
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -159,10 +186,15 @@
     <!-- End boxs container -->
 
 
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <link type="text/css" href="./app/js/jqvmap/jqvmap.css" rel="stylesheet" media="screen" />
+    <script type="text/javascript" src="./app/js/jqvmap/jquery.vmap.js"></script>
+    <script type="text/javascript" src="./app/js/jqvmap/maps/continents/jquery.vmap.egypt.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
     <script src="./app/js/charts_config.js"></script>
     <script src="./app/js/script.js"></script>
+
 </body>
 
 </html>

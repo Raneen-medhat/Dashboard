@@ -68,6 +68,35 @@ Highcharts.chart('pieChart', {
 
     }]
 });
+$(document).ready(function () {
+    ar = [];
+    ar['EGY1530'] = {
+        'total': 100,
+        'amount': 100
+    };
+    data = ar['total'];
+    $('#vmap').vectorMap({
+        map: 'egypt_en',
+        backgroundColor: '#FFFFFF',
+        borderColor: '#FFFFFF',
+        color: '#9FD5F1',
+        hoverOpacity: 0.7,
+        selectedColor: '#666666',
+        enableZoom: true,
+        showTooltip: true,
+        values: data,
+        normalizeFunction: 'polynomial',
+        onLabelShow: function (event, label, code) {
+            if (ar[code]) {
+                label.html('<strong>' + label.text() + '</strong><br />' +
+                    ar[code][
+                        'total'
+                    ] + '<br />' + ar[
+                        code]['amount']);
+            }
+        }
+    });
+});
 // // twitter chart
 // var ctx = document.getElementById('pieChart');
 // data = {
