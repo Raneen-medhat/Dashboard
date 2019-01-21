@@ -5,6 +5,21 @@ header {
     ul {
         li {
             padding-left: 20px;
+            a {
+                color: #8f9bb9
+            }
+            .active {
+                color: #fff;
+            }
+        }
+    }
+    .icons {
+        position: absolute;
+        right: 2%;
+        top: -5px;
+        .email {
+            position: relative;
+            bottom: 12px;
         }
     }
 }

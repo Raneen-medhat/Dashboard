@@ -5,16 +5,73 @@
         background: #ffffff;
         padding: 20px 0;
         border-radius:10px; 
+        position: relative;
+        margin-bottom: 25px;
+        box-shadow: 3px 5px 10px 0px #ddd;
+        .legend {
+            position: absolute;
+            right: 5%;
+            bottom: 15%;
+            font-size: 13px;
+            span {
+                width: 10px;
+                height:10px;
+                border-radius: 50%;
+                display: inline-block;
+                margin-right: 8px;
+                &.postive {
+                    background: #67b24b;
+                }
+                &.normal {
+                    background: #c20f3f;
+                }
+                &.negative {
+                    background: #f4c40c;
+                }
+                &.posts {
+                    background: #0a245d;
+                }
+                &.comments {
+                    background: #1f3799;
+                }
+            }        
+        }
     }
     .box-header {
         position: relative;
+        .twitter {
+            &::before {
+                content: '';
+                display: inline-block;
+                background: url(../images/twitter.png);
+                height: 20px;
+                width: 20px;
+                background-position: center;
+                background-size: cover;
+                margin-right: 8px;
+                vertical-align: bottom;
+            }
+        }
+        .fb {
+            &::before {
+                content: '';
+                display: inline-block;
+                background: url(../images/fb.png);
+                height: 20px;
+                width: 20px;
+                background-position: center;
+                background-size: cover;
+                margin-right: 8px;
+                vertical-align: bottom;
+            }
+        }
         .options{
             img {
                 width: 25px;
                 float: right;
                 cursor: pointer;
             }
-            .options-popup {
+            ul {
                 display: none;
                 background: #fff;
                 box-shadow: 2px 5px 5px 0px #8c8b8b;
@@ -23,14 +80,150 @@
                 width: 120px;
                 right: 0;
                 top: 22px;
-                border-radius: 5px; 
-            }
+                border-radius: 5px;
+                    li {
+                        display: block !important;
+                        padding: 5px;
+                        font-weight: bold;
+                        &:nth-child(1)::before {
+                            content: '';
+                            display: inline-block;
+                            background: url(../images/setting.png);
+                            height: 15px;
+                            width: 15px;
+                            background-position: center;
+                            background-size: cover;
+                            margin-right: 8px;
+                        }
+                        &:nth-child(2)::before {
+                            content: '';
+                            display: inline-block;
+                            background: url(../images/reload.png);
+                            height: 15px;
+                            width: 15px;
+                            background-position: center;
+                            background-size: cover;
+                            margin-right: 8px;
+                        }
+                        &:nth-child(3)::before {
+                            content: '';
+                            display: inline-block;
+                            background: url(../images/delete.png);
+                            height: 15px;
+                            width: 15px;
+                            background-position: center;
+                            background-size: cover;
+                            margin-right: 8px;
+                        }
+                }    
         }
+    }
             .desc {
                 font-size: 12px;
                 color: #afabab;
-                padding-top: 5px;
+                padding-top: 8px;
+                display: inline-block;
             }
+        }
+        .box-data {
+            span {
+                float: right;
+            }
+            .change-time {
+                font-size: 12px;
+                color: #afabab;
+                display: inline-block;
+                margin-top: 12px;
+            }
+            .numbers{
+                margin-top: 20px;
+                h2 {
+                    font-size: 20px;
+                    display: inline-block;
+                }
+                .avrg {
+                    font-size: 20px;
+                    color: #67b24b;
+                    &::before{
+                        content: '';
+                        display: inline-block;
+                        background: url(../images/arrow-top.png);
+                        height: 25px;
+                        width: 25px;
+                        background-position: center;
+                        background-size: cover;
+                        vertical-align: middle;
+                    }
+                }
+            }
+        }
+        .chart-container {
+            padding: 20px 0;
+        }
+}
+.no-margin{
+    margin: 0 !important;
+}
+.fan-name {
+    width: 200px;
+    &::before {
+        content: '';
+        background: #ddd;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 12px;
     }
-
+}
+.fan-activities {
+    float: right;
+    div {
+        display: inline-block;
+    }
+    .share {
+        &::after {
+            content: '';
+            background: url(../images/share.png);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 12px;
+            background-size: cover;
+        }
+    }
+    .like {
+        &::after {
+            content: '';
+            background: url(../images/smile.png);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 12px;
+            background-size: cover;
+        }
+    }
+    .dislike {
+        &::after {
+            content: '';
+            background: url(../images/sad.png);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 12px;
+            background-size: cover;
+        }
+    }
+}
+.fans {
+    .row {
+        margin-bottom: 10px;
+    }
 }

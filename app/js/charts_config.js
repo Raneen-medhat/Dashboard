@@ -1,142 +1,45 @@
-Highcharts.chart('fb', {
 
-    chart: {
-        styledMode: true
-    },
 
-    title: {
-        text: 'Pie point CSS'
-    },
-    legend: {
-        align: 'right',
-        layout: 'Vertical',
-    },
-    series: [{
-        type: 'pie',
-        allowPointSelect: true,
-        keys: ['name', 'y', 'selected', 'sliced'],
-        data: [
-            ['Prunes', 135.6, true, true],
-            ['Apples', 29.9, false],
-            ['Pears', 71.5, false],
-            ['Oranges', 106.4, false]
-        ],
-        showInLegend: true
-    }]
-});
-Highcharts.chart('pieChart', {
-    chart: {
-        type: 'variablepie'
-    },
-    title: {
-        text: 'Countries compared by population density and total area.'
-    },
-    tooltip: {
-        headerFormat: '',
-        pointFormat: '<span style="color:{point.color}">●</span> <b> {point.name}</b><br/>' +
-            'Area (square km): <b>{point.y}</b><br/>' +
-            'Population density (people per square km): <b>{point.z}</b><br/>'
-    },
-    legend: {
-        align: 'right',
-        alignColumns: false,
-        layout: 'Vertical'
-    },
-    series: [{
-        minPointSize: 10,
-        innerSize: '20%',
-        zMin: 0,
-        name: 'countries',
-        data: [{
-            name: 'Spain',
-            y: 505370,
-            z: 92.9
-        }, {
-            name: 'France',
-            y: 551500,
-            z: 118.7
-        }, {
-            name: 'Poland',
-            y: 312685,
-            z: 124.6
-        }, {
-            name: 'Czech Republic',
-            y: 78867,
-            z: 137.5
-        }],
-        showInLegend: true
+// twitter chart
+var ctx = document.getElementById('pieChart');
+data = {
+    datasets: [{
+        data: [50, 25, 35],
+        backgroundColor: ['#67b24b','#c20f3f', '#f4c40c',],
+        borderWidth: 0
+    }],
 
-    }]
-});
-$(document).ready(function () {
-    ar = [];
-    ar['EGY1530'] = {
-        'total': 100,
-        'amount': 100
-    };
-    data = ar['total'];
-    $('#vmap').vectorMap({
-        map: 'egypt_en',
-        backgroundColor: '#FFFFFF',
-        borderColor: '#FFFFFF',
-        color: '#9FD5F1',
-        hoverOpacity: 0.7,
-        selectedColor: '#666666',
-        enableZoom: true,
-        showTooltip: true,
-        values: data,
-        normalizeFunction: 'polynomial',
-        onLabelShow: function (event, label, code) {
-            if (ar[code]) {
-                label.html('<strong>' + label.text() + '</strong><br />' +
-                    ar[code][
-                        'total'
-                    ] + '<br />' + ar[
-                        code]['amount']);
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'Positive',
+        'Negative',
+        'Natural'
+    ]
+};
+
+var myDoughnutChart = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: {
+        cutoutPercentage: 70,
+        responsive: false,
+        maintainAspectRatio: false,
+        legend: {
+            display: false,
+            position: 'right',
+            fullWidth: false,
+            labels : {
+                usePointStyle: true
             }
+        },
+        tooltips: {
+            enabled: true
         }
-    });
+    }
 });
-// // twitter chart
-// var ctx = document.getElementById('pieChart');
-// data = {
-//     datasets: [{
-//         data: [50, 25, 35],
-//         backgroundColor: ['#67b24b','#c20f3f', '#f4c40c',],
-//         borderWidth: 0
-//     }],
-
-//     // These labels appear in the legend and in the tooltips when hovering different arcs
-//     labels: [
-//         'Positive',
-//         'Negative',
-//         'Natural'
-//     ]
-// };
-// // And for a doughnut chart
-// var myDoughnutChart = new Chart(ctx, {
-//     type: 'doughnut',
-//     data: data,
-//     options: {
-//         cutoutPercentage: 70,
-//         responsive: false,
-//         maintainAspectRatio: false,
-//         legend: {
-//             display: true,
-//             position: 'right',
-//             fullWidth: false,
-//             labels : {
-//                 usePointStyle: true
-//             }
-//         },
-//         tooltips: {
-//             enabled: true
-//         }
-//     }
-// });
 
 
-// // fb chart
+// fb chart
 // var fb = document.getElementById('fb');
 // data = {
 //     datasets: [{
@@ -173,3 +76,105 @@ $(document).ready(function () {
 //         }
 //     }
 // });
+
+
+
+Highcharts.chart('fb', {
+    chart: {
+        styledMode: false
+    },
+    series: [{
+        type: 'pie',
+        allowPointSelect: true,
+        keys: ['name', 'y', 'selected', 'sliced',],
+        data: [
+            ['45%', 65, false, true],
+            ['45%', 25, false, true],
+            ['10%', 10, false , true],
+        ],
+        showInLegend: false,
+        title: false
+    }]
+});
+
+
+// posts and comments
+
+var lineChart = document.getElementById('lineChart');
+var line = new Chart(lineChart, {
+    type: 'line',
+    data: {
+
+        labels: [1, 2, 3, 4, 5, 6, 7],
+        datasets: [
+            {
+                label: "Prime and Fibonacci",
+                borderColor: "#0a245d",
+                data: [5, 25, 15, 7, 2, 5, 17, 19],
+                fill: false,
+                spanGaps: false
+            },
+            {
+                label: "Prime and Fibonacci",
+                borderColor: "#1f3799",
+                data: [15, 1, 1, 2, 3, 5, 8, 13, 21, 34],
+                fill: false,
+                spanGaps: false
+            }
+        ]
+    },
+    options: {
+        legend: {
+            display: false,
+        },
+        bezierCurve: false,
+    elements: {
+        line: {
+            tension: 0, // disables bezier curves
+        }
+    }
+    }
+});
+// positive and negative twittes
+
+var lineChart2 = document.getElementById('lineChart2');
+var line2 = new Chart(lineChart2, {
+    type: 'line',
+    data: {
+
+        labels: [1, 2, 3, 4, 5, 6, 7],
+        datasets: [
+            {
+                borderColor: "#67b24b",
+                data: [5, 25, 15, 7, 2, 5, 17, 19],
+                fill: false,
+                spanGaps: false
+            },
+            {   
+                borderColor: "#c20f3f",
+                data: [15, 1, 1, 2, 3, 5, 8, 13, 21, 34],
+                fill: false,
+                spanGaps: false
+            },
+            {
+                label: "Prime and Fibonacci",
+                borderColor: "#f4c40c",
+                data: [15, 12, 51, 22, 13, 35, 2, 34],
+                fill: false,
+                spanGaps: false
+            }
+        ]
+    },
+    options: {
+        legend: {
+            display: false,
+        },
+        bezierCurve: false,
+    elements: {
+        line: {
+            tension: 0, // disables bezier curves
+        }
+    }
+    }
+});
+

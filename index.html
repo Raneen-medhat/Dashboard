@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./app/css/styles.css">
-    <link rel="stylesheet" href="./app/js/jquery-jvectormap-2.0.3.css" type="text/css" media="screen" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flexboxgrid/6.3.1/flexboxgrid.min.css" type="text/css">
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
@@ -17,22 +15,21 @@
         @import 'https://code.highcharts.com/css/highcharts.css';
 
         #fb {
-            height: 400px;
+            height: 200px;
             max-width: 800px;
             min-width: 320px;
             margin: 0 auto;
         }
 
-        #pieChart {
-            min-width: 300px;
-            max-width: 800px;
-            height: 500px;
-            margin: 1em auto;
-        }
-
         .highcharts-pie-series .highcharts-point {
             stroke: #EDE;
             stroke-width: 2px;
+        }
+
+        .highcharts-title,
+        .highcharts-button-symbol,
+        .highcharts-credits {
+            display: none
         }
 
         .highcharts-pie-series .highcharts-data-label-connector {
@@ -62,7 +59,7 @@
                             col-lg-6">
                     <nav>
                         <ul>
-                            <li><a href="">Analytics</a></li>
+                            <li><a class="active" href="">Analytics</a></li>
                             <li><a href="">Campaigns</a></li>
                             <li><a href="">Engagement</a></li>
                             <li><a href="">Role & Permission</a></li>
@@ -74,7 +71,10 @@
                             col-sm-8
                             col-md-6
                             col-lg-4">
-                    <div class="icons"></div>
+                    <div class="icons">
+                        <img src="./app/images/notification.svg" alt="">
+                        <img class="email" src="./app/images/email.png" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -94,6 +94,52 @@
     </section>
     <!-- End dashboard links -->
 
+    <!-- Start dashboard controls -->
+    <section id="dashboard-controls">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Stream Monitoring Dashboard</h2>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li>Add</li>
+                        <li>Export</li>
+                        <li>Date</li>
+                        <li>Filtter by platform</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End dashboard controls  -->
+
+    <!-- Start dashboard filtters  -->
+    <!-- End dashboard filtters   -->
+    <section id="filtter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    Stream
+                    <select>
+                        <option value="voda">Vodafone</option>
+                        <option>Vodafone</option>
+                        <option>Vodafone</option>
+                        <option>Vodafone</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    Filtter
+                    <select>
+                        <option value="voda">None</option>
+                        <option>test</option>
+                        <option>test</option>
+                        <option>test</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- End boxs container -->
     <section class="boxs-wrapper">
         <div class="container">
@@ -104,55 +150,137 @@
                             <div class="box-header">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <p>Twitter Sentiment</p>
+                                        <p class="twitter">Twitter Sentiment</p>
                                         <p class="desc">Last month</p>
+                                        <span class="desc">Aggregated by Day</span>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="options">
                                             <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
-                                            <div class="options-popup">
-                                                <p>Setting</p>
-                                                <p>Reload</p>
-                                                <p>Delete</p>
-                                            </div>
+                                            <ul class="options-popup">
+                                                <li>Setting</li>
+                                                <li>Reload</li>
+                                                <li>Delete</li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id='pieChart' width="300" height="300"></div>
+                            <div class="chart-container">
+                                <canvas id="pieChart" width="200" height="200"></canvas>
+                                <div class="legend">
+                                    <p><span class="postive"></span>Postive</p>
+                                    <p><span class="normal"></span>Noraml</p>
+                                    <p><span class="negative"></span>Negative</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" style="
-                margin-top: 10px;
-            ">
-                    <div class="twitter-sentiment">
-                        <div class="ui-container">
-                            <div class="box-header">
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        <p>FB Sentiment of comments</p>
-                                        <p class="desc">Last month</p>
-                                    </div>
-                                    <div class="col-md-5">
-                                        <div class="options">
-                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
-                                            <div class="options-popup">
-                                                <p>Setting</p>
-                                                <p>Reload</p>
-                                                <p>Delete</p>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="twitter-sentiment">
+                                <div class="ui-container">
+                                    <div class="box-header">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <p class="twitter">Twitter Count</p>
+                                                <p class="desc">Last month</p></br>
                                             </div>
+                                            <div class="col-md-5">
+                                                <div class="options">
+                                                    <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                                    <ul class="options-popup">
+                                                        <li>Setting</li>
+                                                        <li>Reload</li>
+                                                        <li>Delete</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-data">
+                                        <p class="change-time">Total</p>
+                                        <span class="change-time">Change during last weak</span>
+                                        <div class="numbers">
+                                            <h2>68.934 K</h2>
+                                            <span class="avrg">300</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id="vmap" style="width: 500px; height: 400px"></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="twitter-sentiment">
+                                <div class="ui-container">
+                                    <div class="box-header">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <p class="fb">Facebook comment count</p>
+                                                <p class="desc">Last month</p>
+                                                <span class="desc">Aggregated by Day</span>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="options">
+                                                    <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                                    <ul class="options-popup">
+                                                        <p>Setting</p>
+                                                        <p>Reload</p>
+                                                        <p>Delete</p>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-data">
+                                        <p class="change-time">Total</p>
+                                        <span class="change-time">Change during last weak</span>
+                                        <div class="numbers">
+                                            <h2>61.600 K</h2>
+                                            <span class="avrg">150</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="twitter-sentiment">
+                                <div class="ui-container">
+                                    <div class="box-header">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <p class="twitter">Twitter Count</p>
+                                                <p class="desc">Last month</p></br>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <div class="options">
+                                                    <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                                    <ul class="options-popup">
+                                                        <li>Setting</li>
+                                                        <li>Reload</li>
+                                                        <li>Delete</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="box-data">
+                                        <p class="change-time">Total</p>
+                                        <span class="change-time">Change during last weak</span>
+                                        <div class="numbers">
+                                            <h2>68.934 K</h2>
+                                            <span class="avrg">200</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 
                 </div>
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -161,22 +289,227 @@
                             <div class="box-header">
                                 <div class="row">
                                     <div class="col-md-7">
-                                        <p>FB Sentiment of comments</p>
+                                        <p class="fb">FB Sentiment of comments</p>
                                         <p class="desc">Last month</p>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="options">
                                             <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
-                                            <div class="options-popup">
+                                            <ul class="options-popup">
                                                 <p>Setting</p>
                                                 <p>Reload</p>
                                                 <p>Delete</p>
-                                            </div>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div id='fb' width="300" height="300"></div>
+                            <div class="chart-container">
+                                <div id='fb' width="300" height="300"></div>
+                                <div class="legend">
+                                    <p><span class="postive"></span>Postive</p>
+                                    <p><span class="normal"></span>Noraml</p>
+                                    <p><span class="negative"></span>Negative</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="twitter-sentiment">
+                        <div class="ui-container">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p class="fb">Posts With comments count over time</p>
+                                        <p class="desc">Last month</p>
+                                        <span class="desc">Aggregated by Day</span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="options">
+                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                            <ul class="options-popup">
+                                                <p>Setting</p>
+                                                <p>Reload</p>
+                                                <p>Delete</p>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container no-margin">
+                                <canvas id="lineChart" width="400" height="300"></canvas>
+                                <div class="legend">
+                                    <p><span class="posts"></span>Posts</p>
+                                    <p><span class="comments"></span>comment</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="twitter-sentiment">
+                        <div class="ui-container">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p class="twitter">Positive and negative twittes over time</p>
+                                        <p class="desc">Last month</p>
+                                        <span class="desc">Aggregated by Day</span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="options">
+                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                            <ul class="options-popup">
+                                                <p>Setting</p>
+                                                <p>Reload</p>
+                                                <p>Delete</p>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container no-margin">
+                                <canvas id="lineChart2" width="400" height="300"></canvas>
+                                <div class="legend">
+                                    <p><span class="postive"></span>Postive</p>
+                                    <p><span class="normal"></span>Noraml</p>
+                                    <p><span class="negative"></span>Negative</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="twitter-sentiment">
+                        <div class="ui-container">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p class="twitter">Top fans Wedgit</p>
+                                        <p class="desc">Last month</p>
+                                        <span class="desc">Aggregated by Day</span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="options">
+                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                            <ul class="options-popup">
+                                                <p>Setting</p>
+                                                <p>Reload</p>
+                                                <p>Delete</p>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container no-margin fans">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="fan-name">Ahmed Ali</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="fan-activities">
+                                            <div class="share">38</div>
+                                            <div class="like">8</div>
+                                            <div class="dislike">61</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="fan-name">Ahmed Ali</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="fan-activities">
+                                            <div class="share">38</div>
+                                            <div class="like">8</div>
+                                            <div class="dislike">61</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="fan-name">Ahmed Ali</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="fan-activities">
+                                            <div class="share">38</div>
+                                            <div class="like">8</div>
+                                            <div class="dislike">61</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="fan-name">Ahmed Ali</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="fan-activities">
+                                            <div class="share">38</div>
+                                            <div class="like">8</div>
+                                            <div class="dislike">61</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="fan-name">Ahmed Ali</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="fan-activities">
+                                            <div class="share">38</div>
+                                            <div class="like">8</div>
+                                            <div class="dislike">61</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <p class="fan-name">Ahmed Ali</p>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="fan-activities">
+                                            <div class="share">38</div>
+                                            <div class="like">8</div>
+                                            <div class="dislike">61</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <div class="twitter-sentiment">
+                        <div class="ui-container">
+                            <div class="box-header">
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <p class="twitter">Most Frequent word</p>
+                                        <p class="desc">Last month</p>
+                                        <span class="desc">Aggregated by Day</span>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="options">
+                                            <img src="./app/images/options.svg" alt="" onclick="openOptions(this)">
+                                            <ul class="options-popup">
+                                                <p>Setting</p>
+                                                <p>Reload</p>
+                                                <p>Delete</p>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="chart-container no-margin">
+                                <h1>#Ahmed_Zaki</h1>
+                                <p>#EGYPT</p> <span>#Adel_Emam</span>
+                                <h6>#Cairo</h6> <span>#Mona_ZAki</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -186,15 +519,9 @@
     <!-- End boxs container -->
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <link type="text/css" href="./app/js/jqvmap/jqvmap.css" rel="stylesheet" media="screen" />
-    <script type="text/javascript" src="./app/js/jqvmap/jquery.vmap.js"></script>
-    <script type="text/javascript" src="./app/js/jqvmap/maps/continents/jquery.vmap.egypt.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.js"></script>
     <script src="./app/js/charts_config.js"></script>
     <script src="./app/js/script.js"></script>
-
 </body>
 
 </html>
